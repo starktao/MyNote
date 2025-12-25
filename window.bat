@@ -168,111 +168,40 @@ if %NEED_FRONTEND% equ 0 (
     goto :config_env
 )
 
-REM 依赖不完整，询问用户
+REM 自动安装依赖
 echo.
 echo ========================================
-echo  依赖不完整
+echo  开始安装依赖
 echo ========================================
 echo.
-echo 检测到以下依赖需要安装：
+
+REM 安装前端依赖
 if %NEED_FRONTEND% equ 1 (
-    echo   - 前端依赖 (npm install)
-)
-if %NEED_BACKEND% equ 1 (
-    echo   - 后端依赖 (pip install)
-)
-echo.
-echo 请选择：
-echo   1. 自动安装依赖并启动（推荐）
-echo   2. 仅启动服务（假设依赖已手动安装）
-echo   3. 取消并手动安装依赖
-echo.
-set /p CHOICE="请输入选择 (1/2/3): "
-
-if /i "!CHOICE!"=="3" (
+    echo [安装] 前端依赖...
+    echo 这可能需要几分钟，请耐心等待...
     echo.
-    echo 已取消。请手动安装依赖：
-    if %NEED_FRONTEND% equ 1 (
-        echo   前端: cd 1211front ^&^& npm install
-    )
-    if %NEED_BACKEND% equ 1 (
-        echo   后端: cd newbackend ^&^& python -m pip install -r requirements.txt
-    )
-    echo.
-    pause
-    exit /b 1
-)
-
-if /i "!CHOICE!"=="2" (
-    echo.
-    echo [跳过] 将直接启动服务...
-    goto :config_env
-)
-
-if /i "!CHOICE!"=="1" (
-    echo.
-    echo ========================================
-    echo  开始安装依赖
-    echo ========================================
-    echo.
-
-    REM 安装前端依赖
-    if %NEED_FRONTEND% equ 1 (
-        echo [安装] 前端依赖...
-        echo 这可能需要几分钟，请耐心等待...
+    cd /d "%FRONTEND_DIR%"
+    call npm install
+    REM 检查 node_modules 是否存在来判断安装是否成功
+    if not exist "%FRONTEND_DIR%\node_modules" (
         echo.
-        cd /d "%FRONTEND_DIR%"
-        call npm install
-        REM 检查 node_modules 是否存在来判断安装是否成功
-        if not exist "%FRONTEND_DIR%\node_modules" (
-            echo.
-            echo [错误] 前端依赖安装失败
-            cd /d "%PROJECT_ROOT%"
-            pause
-            exit /b 1
-        )
+        echo [错误] 前端依赖安装失败
         cd /d "%PROJECT_ROOT%"
-        echo [OK] 前端依赖安装完成
-        echo.
+        pause
+        exit /b 1
     )
-
-    REM 安装后端依赖
-    if %NEED_BACKEND% equ 1 (
-        echo [安装] 后端依赖...
-        echo 这可能需要几分钟，请耐心等待...
-        echo.
-        cd /d "%BACKEND_DIR%"
-        call %PYTHON_CMD% -m pip install -r requirements.txt
-        REM 验证关键依赖是否安装成功
-        %PYTHON_CMD% -c "import fastapi; import faster_whisper; import openai; import easyocr" >nul 2>&1
-        if %errorlevel% neq 0 (
-            echo.
-            echo [错误] 后端依赖安装失败或不完整
-            echo 请检查网络连接或手动安装：
-            echo   cd newbackend ^&^& %PYTHON_CMD% -m pip install -r requirements.txt
-            cd /d "%PROJECT_ROOT%"
-            pause
-            exit /b 1
-        )
-        cd /d "%PROJECT_ROOT%"
-        echo [OK] 后端依赖安装完成
-        echo.
-    )
-
-    echo ========================================
-    echo  依赖安装完成！
-    echo ========================================
+    cd /d "%PROJECT_ROOT%"
+    echo [OK] 前端依赖安装完成
     echo.
-    echo [继续] 启动服务...
-    echo.
-    goto :config_env
 )
 
-REM 无效选择，默认取消
+echo ========================================
+echo  依赖安装完成！
+echo ========================================
 echo.
-echo [无效选择] 已取消
-pause
-exit /b 1
+echo [继续] 启动服务...
+echo.
+goto :config_env
 
 :config_env
 REM 配置环境变量
