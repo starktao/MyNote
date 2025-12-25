@@ -1,11 +1,19 @@
-# MyNote v2.0.0
+<p align="center">
+  <img src="./1211front/public/mynote-icon.png" alt="MyNote Icon" width="120" height="120">
+</p>
 
-_AI 智能视频笔记生成工具 - 让 AI 为你的视频做笔记_
+<h1 align="center">MyNote v2.0.0</h1>
 
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Python](https://img.shields.io/badge/python-3.9+-green)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-teal)
-![Vue](https://img.shields.io/badge/Vue-3.5-brightgreen)
+<p align="center">
+  <em>AI 智能视频笔记生成工具 - 让 AI 为你的视频做笔记</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License">
+  <img src="https://img.shields.io/badge/python-3.9+-green" alt="Python">
+  <img src="https://img.shields.io/badge/FastAPI-0.115-teal" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Vue-3.5-brightgreen" alt="Vue">
+</p>
 
 ## 项目简介
 
