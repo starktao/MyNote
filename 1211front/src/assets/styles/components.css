@@ -1,0 +1,453 @@
+/* ============================================
+   Component-specific Styles
+   通用组件样式覆盖
+   ============================================ */
+
+/* 替换所有 retro-panel 为 modern-card */
+.retro-panel {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+/* 替换所有 retro-button */
+.retro-button {
+  padding: var(--space-3) var(--space-5);
+  background: var(--surface-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.retro-button:hover {
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.retro-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.retro-button.primary {
+  background: var(--primary-500);
+  border-color: var(--primary-600);
+  color: var(--text-inverse);
+}
+
+.retro-button.primary:hover {
+  background: var(--primary-600);
+  box-shadow: var(--shadow-md);
+}
+
+.retro-button.ghost {
+  background: transparent;
+  border-color: transparent;
+}
+
+.retro-button.ghost:hover {
+  background: var(--surface-hover);
+}
+
+.retro-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 替换所有 retro-field */
+.retro-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.retro-field > span,
+.retro-field legend {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-secondary);
+}
+
+.retro-field input[type="text"],
+.retro-field input[type="number"],
+.retro-field input[type="email"],
+.retro-field input[type="password"],
+.retro-field input[type="url"],
+.retro-field select,
+.retro-field textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  transition: all var(--duration-fast) var(--ease-out);
+  outline: none;
+}
+
+.retro-field input:hover,
+.retro-field select:hover,
+.retro-field textarea:hover {
+  border-color: var(--border-secondary);
+  background: var(--surface-hover);
+}
+
+.retro-field input:focus,
+.retro-field select:focus,
+.retro-field textarea:focus {
+  border-color: var(--border-focus);
+  background: var(--bg-tertiary);
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.retro-field input:read-only {
+  background: var(--surface-secondary);
+  cursor: not-allowed;
+}
+
+/* History Card Styles */
+.history-card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.history-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary-500);
+  transform: scaleY(0);
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.history-card:hover {
+  background: var(--surface-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateX(4px);
+}
+
+.history-card:hover::before {
+  transform: scaleY(1);
+}
+
+.history-card.active {
+  background: var(--primary-50);
+  border-color: var(--primary-300);
+  box-shadow: var(--shadow-lg);
+}
+
+.history-card.active::before {
+  transform: scaleY(1);
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.status-badge[data-status='SUCCESS'] {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.status-badge[data-status='FAILED'] {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.status-badge[data-status='PENDING'],
+.status-badge[data-status='RUNNING'] {
+  background: var(--warning-light);
+  color: var(--warning);
+}
+
+.status-badge[data-status='IDLE'] {
+  background: var(--neutral-200);
+  color: var(--neutral-600);
+}
+
+/* Progress Bar (for BatchStatus) */
+.batch-progress,
+.progress-bar-container {
+  width: 100%;
+  height: 8px;
+  background: var(--surface-tertiary);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.batch-progress-fill,
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--primary-400),
+    var(--primary-500),
+    var(--primary-400)
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--duration-slower) var(--ease-out);
+  animation: shimmer 2s linear infinite;
+}
+
+/* Note Preview Styles */
+.note-content {
+  background: var(--surface-tertiary);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  font-family: var(--font-sans);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-primary);
+}
+
+.note-content h1,
+.note-content h2,
+.note-content h3,
+.note-content h4,
+.note-content h5,
+.note-content h6 {
+  color: var(--text-primary);
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-3);
+  font-weight: var(--font-weight-semibold);
+}
+
+.note-content h1 {
+  font-size: var(--font-size-3xl);
+  border-bottom: 2px solid var(--border-primary);
+  padding-bottom: var(--space-3);
+}
+
+.note-content h2 {
+  font-size: var(--font-size-2xl);
+}
+
+.note-content h3 {
+  font-size: var(--font-size-xl);
+}
+
+.note-content p {
+  margin-bottom: var(--space-4);
+  color: var(--text-secondary);
+}
+
+.note-content ul,
+.note-content ol {
+  margin-left: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.note-content li {
+  margin-bottom: var(--space-2);
+  color: var(--text-secondary);
+}
+
+.note-content code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--surface-secondary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--radius-sm);
+  color: var(--primary-600);
+}
+
+.note-content pre {
+  background: var(--surface-secondary);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--space-4);
+}
+
+.note-content pre code {
+  background: none;
+  padding: 0;
+  color: var(--text-primary);
+}
+
+.note-content blockquote {
+  border-left: 4px solid var(--primary-500);
+  padding-left: var(--space-4);
+  margin: var(--space-4) 0;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+.note-content a {
+  color: var(--primary-500);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.note-content a:hover {
+  color: var(--primary-600);
+  text-decoration: underline;
+}
+
+.note-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: var(--space-4) 0;
+}
+
+.note-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
+}
+
+.note-content th,
+.note-content td {
+  padding: var(--space-3);
+  border: 1px solid var(--border-primary);
+  text-align: left;
+}
+
+.note-content th {
+  background: var(--surface-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.note-content td {
+  color: var(--text-secondary);
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--text-tertiary);
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-4);
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  margin: 0 0 var(--space-2) 0;
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-base);
+  max-width: 400px;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border-primary);
+  border-top-color: var(--primary-500);
+  border-radius: var(--radius-full);
+  animation: spin 0.8s linear infinite;
+}
+
+/* Tabs */
+.tab-list {
+  display: flex;
+  gap: var(--space-2);
+  border-bottom: 1px solid var(--border-primary);
+  margin-bottom: var(--space-4);
+}
+
+.tab-button {
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.tab-button:hover {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.tab-button.active {
+  color: var(--primary-500);
+  border-bottom-color: var(--primary-500);
+}
+
+/* Search Input */
+.search-input {
+  position: relative;
+}
+
+.search-input input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-10);
+  background: var(--surface-tertiary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.search-input input:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--primary-100);
+  outline: none;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}

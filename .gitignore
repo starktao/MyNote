@@ -1,0 +1,110 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Application specific
+# Exclude root-level models/ but allow app/models/
+models/
+!app/models/
+uploads/
+temp/
+downloads/
+cache/
+.pytest_cache/
+
+# Exclude temporary screenshots and output files
+newbackend/temp_screenshots/
+newbackend/static/screenshots/*.jpg
+newbackend/static/screenshots/*_screenshot_result.json
+newbackend/output/*.json
+
+# Exclude database
+newbackend/mynote.db
+
+# Embedded repositories (these should be submodules)
+# Note: mynote and newbackend are now part of the main project
+AI-Video-Transcriber/
+bilinote1114/
+
+# Invalid files
+nul
+
+# Claude
+.claude/
+
+# Project specific - local files
+CLAUDE.md
+newbackend/.python-version
+
+# Large binary files
+*.exe
+*.zip
+*.tar.gz
+*.rar
+
+# Frontend build artifacts
+dist/
+build/
+
+# Python portable
+python*/

@@ -1,0 +1,24 @@
+[tool.uvicorn]
+reload = true
+reload_excludes = [
+    "__pycache__",
+    "*.pyc",
+    ".git",
+    ".vscode",
+    "logs",
+    "outputs",
+    "temp_screenshots",
+    "static/screenshots"
+]
+
+[tool.watchfiles]
+ignore = [
+    "__pycache__",
+    "*.pyc",
+    ".git",
+    ".vscode",
+    "logs",
+    "outputs",
+    "temp_screenshots",
+    "static/screenshots"
+]

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+logs/
+*.log
+
+# Runtime outputs
+output/
+temp_screenshots/
+test_outputs/
+
+# Static files (screenshots)
+static/screenshots/*.jpg
+static/screenshots/*.png
+static/screenshots/*_screenshot_result.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/

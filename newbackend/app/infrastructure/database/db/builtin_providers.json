@@ -1,0 +1,47 @@
+[
+  {
+    "id": "openai",
+    "name": "OpenAI",
+    "logo": "OpenAI",
+    "type": "built-in",
+    "api_key": "",
+    "base_url": "https://api.openai.com/v1",
+    "enabled": false
+  },
+  {
+    "id": "deepseek",
+    "name": "DeepSeek",
+    "logo": "DeepSeek",
+    "type": "built-in",
+    "api_key": "",
+    "base_url": "https://api.deepseek.com/v1",
+    "enabled": false
+  },
+  {
+    "id": "qwen",
+    "name": "通义千问",
+    "logo": "Qwen",
+    "type": "built-in",
+    "api_key": "",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "enabled": false
+  },
+  {
+    "id": "moonshot",
+    "name": "Moonshot AI",
+    "logo": "Moonshot",
+    "type": "built-in",
+    "api_key": "",
+    "base_url": "https://api.moonshot.cn/v1",
+    "enabled": false
+  },
+  {
+    "id": "zhipu",
+    "name": "智谱AI",
+    "logo": "Zhipu",
+    "type": "built-in",
+    "api_key": "",
+    "base_url": "https://open.bigmodel.cn/api/paas/v4",
+    "enabled": false
+  }
+]
