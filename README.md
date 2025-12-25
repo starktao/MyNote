@@ -516,3 +516,16 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 **特别说明**:
 1. **智能关键帧选择**: 无需大模型浏览全视频，先提取关键点再智能选择最佳截图，支持多模态AI和OCR双策略
 2. **动态并发优化**: 根据机器配置自动调整线程数，三级并发架构实现性能最大化
+
+## 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+### 开发环境设置
+1. Python 3.9+
+2. Node.js 18+
+3. FFmpeg
+
+### 提交规范
+请遵循 conventional commits 规范
+
